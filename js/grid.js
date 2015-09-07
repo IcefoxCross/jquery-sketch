@@ -10,4 +10,10 @@ $(document).ready(function(){
 	for (var i = 0; i < rows; i++) {
 		$("#container").append($row.clone());
 	}
+
+	$(".square").hover(function() {
+		var randomColor = Math.floor(Math.random()*16777215).toString(16);
+		$(this).css("background", "#" + randomColor);
+	});
 });
+
