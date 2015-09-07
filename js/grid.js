@@ -8,6 +8,6 @@ $(document).ready(function(){
 		$row.append($square.clone());
 	}
 	for (var i = 0; i < rows; i++) {
-		$("container").append($row.clone());
+		$("#container").append($row.clone());
 	}
 });
