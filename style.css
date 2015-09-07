@@ -4,7 +4,7 @@
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
-	background: #000000;
+	background: #FFFFFF;
 }
 
 .row{
@@ -21,4 +21,8 @@
 	display: inline-block;
 	float: left;
 	background: #FFFFFF;
+}
+
+.blocks{
+	margin-left: 290px;
 }
