@@ -1,4 +1,4 @@
-var squares = 4;
+var squares = 8;
 var winSize = 640;
 var $row = $("<div />", {class: "row"});
 var $square = $("<div />", {class: "square"});
@@ -12,16 +12,18 @@ $(document).ready(function(){
 	});
 
 	$(".blocks").click(function() {
-		squares = prompt("What will the new grid X size be? (X * X)");
-		remakeGrid(squares);
+		var newSquare = parseInt(prompt("What will the new grid X size be? (X * X)"));
+		remakeGrid(newSquare);
 	});
 });
 
 function remakeGrid(newS){
-	$row.css("height", winSize / newS);
+	$("#container").empty();
+	var newGrid = Math.floor(winSize / newS);
+	$row.css({"height": newGrid});
 	$square.css({
-		'height': winSize / newS,
-		'width': winSize / newS
+		'height': newGrid,
+		'width': newGrid
 	});
 
 	for (var i = 0; i < newS; i++) {
