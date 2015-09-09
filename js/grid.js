@@ -1,29 +1,32 @@
-var squares = 8;
+var squares = 16;
 var winSize = 640;
-var $row = $("<div />", {class: "row"});
-var $square = $("<div />", {class: "square"});
+var grid = true;
 
 $(document).ready(function(){
 	remakeGrid(squares);
 
-	$(".square").hover(function() {
-		var randomColor = Math.floor(Math.random()*16777215).toString(16);
-		$(this).css("background", "#" + randomColor);
+	$(".blocks").click(function() {
+		squares = parseInt(prompt("What will the new grid X size be? (X * X)"));
+		remakeGrid(squares);
 	});
 
-	$(".blocks").click(function() {
-		var newSquare = parseInt(prompt("What will the new grid X size be? (X * X)"));
-		remakeGrid(newSquare);
+	$(".square").hover(function() {
+		var randomColor = Math.floor(Math.random()*16777215).toString(16);
+		$(this).css("background-color", "#" + randomColor);
 	});
+
+	$(".grid").click(function(){toggleGrid()});
 });
 
 function remakeGrid(newS){
 	$("#container").empty();
-	var newGrid = Math.floor(winSize / newS);
+	var $row = $("<div />", {class: "row"});
+	var $square = $("<div />", {class: "square"});
+	var newGrid = winSize / newS;
 	$row.css({"height": newGrid});
 	$square.css({
 		'height': newGrid,
-		'width': newGrid
+		'width': newGrid,
 	});
 
 	for (var i = 0; i < newS; i++) {
@@ -32,4 +35,9 @@ function remakeGrid(newS){
 	for (var i = 0; i < newS; i++) {
 		$("#container").append($row.clone());
 	}
+}
+
+function toggleGrid(){
+	grid ? $(".square").css("outline", "0") : $(".square").css("outline", "1px solid");
+	grid = !grid;
 }
